@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use Illuminate\Support\Facades\Auth;
 class EncoderCheck
 {
     /**
@@ -15,6 +15,12 @@ class EncoderCheck
      */
     public function handle($request, Closure $next)
     {
+        if(!Auth::check()){
+            return redirect()->route('login');
+        }
+        if(Auth::user()->role_id != 3){
+            abort(404);
+        }
         return $next($request);
     }
 }

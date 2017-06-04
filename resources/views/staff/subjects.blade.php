@@ -24,16 +24,16 @@
 		<div>
 			<div class="col-lg-3 well">
 				<ul class="nav nav-pills nav-stacked row">
-				  <li role="presentation" class="active"><a href="{{route('staff_main')}}"><i class="glyphicon glyphicon-home pull-right"></i>Dashboard</a></li>
+				  <li role="presentation"><a href="{{route('staff_main')}}"><i class="glyphicon glyphicon-home pull-right"></i>Dashboard</a></li>
 				  
-				  <li role="presentation"><a href="{{route('staff_subjects')}}"><i class="glyphicon glyphicon-book pull-right"></i>Subjects</a></li>
+				  <li role="presentation" class="active"><a href="{{route('staff_subjects')}}"><i class="glyphicon glyphicon-book pull-right"></i>Subjects</a></li>
 				  <li role="presentation"><a href="{{route('staff_logout')}}"><i class="glyphicon glyphicon-retweet pull-right"></i>Logout</a></li>
 				</ul>
 			</div>
 			<div class="col-lg-9 well">
 				<div class="panel panel-primary row">
 					<div class="panel-heading">
-						<h2 class="text-center">Staff Dashboard</h2>
+						<h2 class="text-center">Subjects</h2>
 					</div>
 					<div class="panel-body">
 						

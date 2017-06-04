@@ -9,32 +9,67 @@ Route::get('/', function(){
 });
 
 Route::group(['prefix'=> 'auth'], function(){
-	Route::get('/login', [
-		'as'=> 'login',
-		'uses'=> 'AuthController@login'
-	]);
-	Route::post('/login', [
-		'as'=> 'loginCheck',
-		'uses'=> 'AuthController@loginCheck'
-	]);
-	Route::get('/register', [
-		'as'=> 'register',
-		'uses'=> 'AuthController@register'
-	]);
+		Route::get('/login', [
+			'as'=> 'login',
+			'uses'=> 'AuthController@login'
+		]);
+		Route::post('/login', [
+			'as'=> 'loginCheck',
+			'uses'=> 'AuthController@loginCheck'
+		]);
+		Route::get('/register', [
+			'as'=> 'register',
+			'uses'=> 'AuthController@register'
+		]);
 });
 
 Route::group(['prefix'=> 'admin'], function(){
-	Route::get('/main', [
-		'as'=> 'admin_main',
-		'uses'=> 'AdminController@main'
-	]);
+		Route::get('/main', [
+			'as'=> 'admin_main',
+			'uses'=> 'AdminController@main'
+		]);
+		Route::get('/logout',[
+			'as'=> 'admin_logout',
+			'uses'=> 'AdminController@logout'
+		]);
+		Route::get('/teachers', [
+			'as'=> 'admin_teachers',
+			'uses'=> 'AdminController@teachers'
+		]);
+		Route::get('/students', [
+			'as'=> 'admin_students',
+			'uses'=> 'AdminController@students'
+		]);
+		Route::get('/subjects', [
+			'as'=> 'admin_subjects',
+			'uses'=> 'AdminController@subjects'
+		]);
 });
 
 Route::group(['prefix'=> 'staff'], function(){
-	Route::get('/main', [
-		'as'=> 'staff_main',
-		'uses'=> 'Staffcontroller@main'
-	]);
+		Route::get('/main', [
+			'as'=> 'staff_main',
+			'uses'=> 'Staffcontroller@main'
+		]);
+		Route::get('/logout', [
+			'as'=> 'staff_logout',
+			'uses'=> 'Staffcontroller@logout'
+		]);
+		Route::get('/subjects', [
+			'as'=> 'staff_subjects',
+			'uses'=> 'Staffcontroller@subjects'
+		]);
+});
+
+Route::group(['prefix'=> 'encoder'], function(){
+		Route::get('/main', [
+			'as'=> 'encoder_main',
+			'uses'=> 'EncoderController@main'
+		]);	
+		Route::get('/logout', [
+			'as'=> 'encoder_logout',
+			'uses' => 'EncoderController@logout'
+		]);
 });
 
 // Route::get('/userAdd', function(){

@@ -52,7 +52,7 @@ protected $request;
         }else if(Auth::user()->role_id == 2){
             return redirect()->route('staff_main');
         }else if(Auth::user()->role_id == 3){
-            return redirect()->route('admin_main');
+            return redirect()->route('encoder_main');
         }
         
 

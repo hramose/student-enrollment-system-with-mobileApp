@@ -19,9 +19,9 @@ class AdminCheck
         if(!Auth::check()){
             return redirect()->route('login');
         }
-        // if(Auth::user()->role != 1){
-        //     abort(404);
-        // }
+        if(Auth::user()->role_id != 1){
+            abort(404);
+        }
 
         return $next($request);
     }
