@@ -44,6 +44,26 @@ Route::group(['prefix'=> 'admin'], function(){
 			'as'=> 'admin_subjects',
 			'uses'=> 'AdminController@subjects'
 		]);
+		Route::get('/teachers/new', [
+			'as'=> 'admin_teachers_new',
+			'uses'=> 'AdminController@new'
+		]);
+		Route::post('/teachers/new', [
+			'as'=> 'admin_teacher_check',
+			'uses'=> 'AdminController@new_teacher'
+		]);
+		Route::get('/teachers/search', [
+			'as'=> 'admin_teachers_search',
+			'uses'=> 'AdminController@search'
+		]);
+		Route::get('/subjects/new', [
+			'as'=> 'admin_subjects_new',
+			'uses'=> 'AdminController@subjects_new'
+		]);
+		Route::post('/subjects/new', [
+			'as'=> 'admin_subject_check',
+			'uses'=> 'AdminController@subjects_check'
+		]);
 });
 
 Route::group(['prefix'=> 'staff'], function(){
@@ -59,6 +79,11 @@ Route::group(['prefix'=> 'staff'], function(){
 			'as'=> 'staff_subjects',
 			'uses'=> 'Staffcontroller@subjects'
 		]);
+		Route::get('/subject/new', [
+			'as'=> 'staff_subjects_new',
+			'uses'=> 'Staffcontroller@subjects_new'
+		]);
+
 });
 
 Route::group(['prefix'=> 'encoder'], function(){

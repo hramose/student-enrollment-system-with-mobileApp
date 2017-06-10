@@ -23,4 +23,8 @@ class Staffcontroller extends Controller
     public function subjects(){
         return view('staff.subjects');
     }
+
+    public function subjects_new(){
+        return view('staff.new_subjects');
+    }
 }

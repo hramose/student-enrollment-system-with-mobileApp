@@ -33,10 +33,15 @@
 			<div class="col-lg-9 well">
 				<div class="panel panel-primary row">
 					<div class="panel-heading">
-						<h2 class="text-center">Subjects</h2>
+						<h2 class="text-center">Teachers Subjects</h2>
 					</div>
 					<div class="panel-body">
-						
+						<ul class="nav nav-tabs">
+						  <li role="presentation" class="active"><a href="{{route('staff_subjects')}}">List</a></li>
+						  <li role="presentation"><a href="{{route('staff_subjects_new')}}">New</a></li>
+						  
+						</ul>
+
 					</div>
 				</div>
 			</div>

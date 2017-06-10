@@ -13,6 +13,9 @@
 		color: #e5bf37;
 		font-size: 25px;
 	}
+	.panel-body div form {
+		margin-top: 5%;
+	}
 </style>
 @endsection
 
@@ -37,43 +40,26 @@
 						<h2 class="text-center">Teachers List</h2>
 					</div>
 					<div class="panel-body">
-						@if(Session::has('info'))
-							<div class="alert alert-success">{{Session::get('info')}}</div>
-						@endif
 						<ul class="nav nav-tabs">
-						  <li role="presentation" class="active"><a href="{{route('admin_teachers')}}">List</a></li>
-						  <li role="presentation"><a href="{{route('admin_teachers_new')}}">New</a></li>
-						  <li role="presentation"><a href="{{route('admin_teachers_search')}}">Search</a></li>
+						  <li role="presentation"><a href="{{route('admin_teachers')}}">List</a></li>
+						  <li role="presentation" ><a href="{{route('admin_teachers_new')}}">New</a></li>
+						  <li role="presentation" class="active"><a href="{{route('admin_teachers_search')}}">Search</a></li>
 						</ul>
 
 						<div>
-							<table class="table table-striped">
-								<thead>
-									<tr class="info">
-										<th>Username</th>
-										<th>Email</th>
-										<th>First Name</th>
-										<th>Middle Name</th>
-										<th>Last Name</th>
-										<th>Contact</th>
-										
-									</tr>
-								</thead>
-								<tbody>
-									@if($users->count())
-										@foreach($users as $user)
-											<tr>
-												<td>{{$user->username}}</td>
-												<td>{{$user->email}}</td>
-												<td>{{$user->firstname}}</td>
-												<td>{{$user->middlename}}</td>
-												<td>{{$user->lastname}}</td>
-												<td>{{$user->contact}}</td>
-											</tr>
-										@endforeach
-									@endif
-								</tbody>
-							</table>
+							<form class="form-horizontal" role="form">
+							  <div class="form-group">
+							    <label class="control-label col-sm-3" for="search">Search:</label>
+							    <div class="col-sm-6">
+							      <input type="text" class="form-control" name="search" placeholder="Enter Search">
+							    </div>
+							  </div>
+							  <div class="form-group">
+							  	<div class="col-md-6 col-md-offset-3">
+							  		<button type="submit" class="btn btn-primary">Search</button>
+							  	</div>
+							  </div>
+							</form>
 						</div>
 					</div>
 				</div>

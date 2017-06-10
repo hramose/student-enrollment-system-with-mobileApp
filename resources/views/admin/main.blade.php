@@ -14,6 +14,7 @@
 		font-size: 25px;
 	}
 </style>
+{!! Charts::assets() !!}
 @endsection
 
 @section('contents')
@@ -37,7 +38,13 @@
 						<h2 class="text-center">Admin Dashboard</h2>
 					</div>
 					<div class="panel-body">
-						<h1>Google Chart and chartJS data HERE</h1>
+						<center>
+				            {!! $chart->render() !!}
+				        </center>
+
+				        <center>
+				            {!! $charts->render() !!}
+				        </center>
 					</div>
 				</div>
 			</div>

@@ -37,7 +37,43 @@
 						<h2 class="text-center">Subject List</h2>
 					</div>
 					<div class="panel-body">
-						<h1>Google Chart and chartJS data HERE</h1>
+						<ul class="nav nav-tabs">
+						  <li role="presentation" class="active"><a href="{{route('admin_subjects')}}">List</a></li>
+						  <li role="presentation"><a href="{{route('admin_subjects_new')}}">New</a></li>
+						  <li role="presentation"><a href="#">Search</a></li>
+						</ul>
+
+						<div>
+							@if(Session::has('info'))
+								<div class="alert alert-success">
+									{{Session::get('info')}}
+								</div>
+							@endif
+							<table class="table table-striped">
+								<thead>
+									<tr class="info">
+										<th>Subject Code</th>
+										<th>Description</th>
+										<th>Time</th>
+										
+										
+									</tr>
+								</thead>
+								<tbody>
+									@if($subjects->count())
+										@foreach($subjects as $subject)
+											<tr>
+												<td>{{$subject->subject_code}}</td>
+												<td>{{$subject->description}}</td>
+												<td>{{$subject->schedule->schedules}}</td>
+											</tr>
+										@endforeach
+									@endif
+								</tbody>
+							</table>
+
+							{{$subjects->links()}}
+						</div>
 					</div>
 				</div>
 			</div>

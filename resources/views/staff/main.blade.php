@@ -33,7 +33,7 @@
 			<div class="col-lg-9 well">
 				<div class="panel panel-primary row">
 					<div class="panel-heading">
-						<h2 class="text-center">Staff Dashboard</h2>
+						<h2 class="text-center">Staff/Teachers Dashboard</h2>
 					</div>
 					<div class="panel-body">
 						
