@@ -25,8 +25,9 @@
 			<div class="col-lg-3 well">
 				<ul class="nav nav-pills nav-stacked row">
 				  <li role="presentation"><a href="{{route('admin_main')}}"><i class="glyphicon glyphicon-home pull-right"></i>Dashboard</a></li>
-				  <li role="presentation"><a href="{{route('admin_teachers')}}"><i class="glyphicon glyphicon-user pull-right"></i>Teacher</a></li>
+				  <li role="presentation"><a href="{{route('admin_teachers')}}"><i class="glyphicon glyphicon-user pull-right"></i>Users</a></li>
 				  <li role="presentation"><a href="{{route('admin_students')}}"><i class="glyphicon glyphicon-education pull-right"></i>Students</a></li>
+				  <li role="presentation"><a href="{{route('admin_departments')}}"><i class="glyphicon glyphicon-bookmark pull-right"></i>Department</a></li>
 				  <li role="presentation" class="active"><a href="{{route('admin_subjects')}}"><i class="glyphicon glyphicon-book pull-right"></i>Subjects</a></li>
 				  <li role="presentation"><a href="{{route('admin_logout')}}"><i class="glyphicon glyphicon-retweet pull-right"></i>Logout</a></li>
 				</ul>
@@ -40,7 +41,7 @@
 						<ul class="nav nav-tabs">
 						  <li role="presentation" class="active"><a href="{{route('admin_subjects')}}">List</a></li>
 						  <li role="presentation"><a href="{{route('admin_subjects_new')}}">New</a></li>
-						  <li role="presentation"><a href="#">Search</a></li>
+						  
 						</ul>
 
 						<div>
@@ -52,20 +53,25 @@
 							<table class="table table-striped">
 								<thead>
 									<tr class="info">
+										<th>User</th>
 										<th>Subject Code</th>
 										<th>Description</th>
 										<th>Time</th>
-										
-										
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
 									@if($subjects->count())
 										@foreach($subjects as $subject)
-											<tr>
+											<tr class="{{$subject->status_id == 1 ? 'success' : 'danger'}}">
+												<td>{{$subject->user->lastname}}, {{$subject->user->firstname}}</td>
 												<td>{{$subject->subject_code}}</td>
 												<td>{{$subject->description}}</td>
 												<td>{{$subject->schedule->schedules}}</td>
+												<td>
+													<a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-lock"></span></a>
+													<a href="#" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-share"></span></a>
+												</td>
 											</tr>
 										@endforeach
 									@endif

@@ -16,26 +16,26 @@ class TeacherCheck {
 	}
 
 	public function check(){
-		$this->checkValidates();
+		
 		$this->newTeachers();
 	}
 
-	public function checkValidates(){
-		$this->validate($this->request, [
-			'username'=> 'required',
-			'email' => 'required',
-			'password' => 'required|max:12',
-			'pass2' => 'required|max:12|same:password',
+	// public function checkValidates(){
+	// 	$this->validate($this->request, [
+	// 		'username'=> 'required',
+	// 		'email' => 'required',
+	// 		'password' => 'required|max:12',
+	// 		'pass2' => 'required|max:12|same:password',
 			
-			'fname' => 'required',
-			'mname' => 'required',
-			'lname' => 'required',
-			'contact' => 'required',
-			'address' => 'required'
-		]);
+	// 		'fname' => 'required',
+	// 		'mname' => 'required',
+	// 		'lname' => 'required',
+	// 		'contact' => 'required',
+	// 		'address' => 'required'
+	// 	]);
 
-		return $this;
-	}
+	// 	return $this;
+	// }
 
 	public function newTeachers(){
 		
@@ -48,7 +48,7 @@ class TeacherCheck {
 		$user->lastname = $this->request['lname'];
 		$user->contact = $this->request['contact'];
 		$user->address = $this->request['address'];
-		$user->role_id = 2;
+		$user->role_id = $this->request['role'];
 		$user->status_id = 2;
 		$user->save();
 

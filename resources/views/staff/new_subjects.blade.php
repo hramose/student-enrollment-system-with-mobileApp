@@ -43,7 +43,7 @@
 						</ul>
 
 						<div>
-							<form class="form-horizontal" role="form" action="#" method="POST">
+							<form class="form-horizontal" role="form" action="{{route('staff_subject_check')}}" method="POST">
 
 								<div class="col-md-6">
 									<div class="form-group {{$errors->has('subject_code') ? 'has-error' : ''}}">

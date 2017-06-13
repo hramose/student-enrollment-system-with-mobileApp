@@ -40,6 +40,14 @@ Route::group(['prefix'=> 'admin'], function(){
 			'as'=> 'admin_students',
 			'uses'=> 'AdminController@students'
 		]);
+		Route::get('/students/upload', [
+			'as'=> 'admin_students_upload',
+			'uses'=> 'AdminController@students_upload'
+		]);
+		Route::post('students/upload', [
+			'as'=> 'admin_students_uploadCheck',
+			'uses'=> 'AdminController@students_uploadCheck'
+		]);
 		Route::get('/subjects', [
 			'as'=> 'admin_subjects',
 			'uses'=> 'AdminController@subjects'
@@ -64,6 +72,15 @@ Route::group(['prefix'=> 'admin'], function(){
 			'as'=> 'admin_subject_check',
 			'uses'=> 'AdminController@subjects_check'
 		]);
+
+		Route::get('/department', [
+			'as'=> 'admin_departments',
+			'uses'=> 'AdminController@departments'
+		]);
+		Route::get('/department/new', [
+			'as'=> 'admin_departments_new',
+			'uses'=> 'AdminController@departments_new'
+		]);
 });
 
 Route::group(['prefix'=> 'staff'], function(){
@@ -82,6 +99,10 @@ Route::group(['prefix'=> 'staff'], function(){
 		Route::get('/subject/new', [
 			'as'=> 'staff_subjects_new',
 			'uses'=> 'Staffcontroller@subjects_new'
+		]);
+		Route::post('/subject/new', [
+			'as'=> 'staff_subject_check',
+			'uses'=> 'Staffcontroller@subject_check'
 		]);
 
 });

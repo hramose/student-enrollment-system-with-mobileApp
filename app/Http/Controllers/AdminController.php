@@ -9,6 +9,10 @@ use App\User;
 use App\Admin\TeacherCheck;
 use App\Admin\SubjectCheck;
 use App\Subject;
+use App\Http\Requests\AdminNewTeacher;
+use App\Http\Requests\admin\studentcheck;
+use App\Admin\StudentInsert;
+use App\Student;
 
 class AdminController extends Controller
 {
@@ -63,12 +67,13 @@ class AdminController extends Controller
     }
 
     public function teachers(){
-        $users = User::where('role_id', 2)->get();
+        $users = User::where('role_id', '!=', 1)->get();
         return view('admin.teachers', compact('users'));
     }
 
     public function students(){
-        return view('admin.students');
+        $students = Student::paginate(15);
+        return view('admin.students', compact('students'));
     }
 
     public function subjects(){
@@ -80,7 +85,8 @@ class AdminController extends Controller
         return view('admin.teacher.new');
     }
 
-    public function new_teacher(TeacherCheck $new_teacher){
+    public function new_teacher(AdminNewTeacher $check ,TeacherCheck $new_teacher){
+         $check->rules();
          $new_teacher->check();
          return redirect()->route('admin_teachers')->with('info', 'Teachers Successfully Added');
 
@@ -99,5 +105,22 @@ class AdminController extends Controller
         $subject->check();
 
         return redirect()->route('admin_subjects')->with('info', 'Subjects Successfully Added');
+    }
+
+
+    public function students_upload(){
+        return view('admin.students.upload');
+    }
+
+    public function students_uploadCheck(studentcheck $request, StudentInsert $student){
+        return $student->studentAdd();
+    }
+
+    public function departments(){
+            return view('admin.department.department');
+    }
+
+    public function departments_new(){
+        return view('admin.department.new');
     }
 }

@@ -18,6 +18,9 @@ class CreateSchoolSemestersTable extends Migration
             $table->string('year');
             $table->string('semester');
             $table->integer('standing_id');
+            $table->string('student_id');
+            $table->integer('status_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

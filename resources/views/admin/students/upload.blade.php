@@ -27,7 +27,7 @@
 				  <li role="presentation" ><a href="{{route('admin_main')}}"><i class="glyphicon glyphicon-home pull-right"></i>Dashboard</a></li>
 				  <li role="presentation"><a href="{{route('admin_teachers')}}"><i class="glyphicon glyphicon-user pull-right"></i>Users</a></li>
 				  <li role="presentation" class="active"><a href="{{route('admin_students')}}"><i class="glyphicon glyphicon-education pull-right"></i>Students</a></li>
-				  <li role="presentation"><a href="{{route('admin_departments')}}"><i class="glyphicon glyphicon-bookmark pull-right"></i>Department</a></li>
+				  <li role="presentation"><a href="#"><i class="glyphicon glyphicon-bookmark pull-right"></i>Department</a></li>
 				  <li role="presentation"><a href="{{route('admin_subjects')}}"><i class="glyphicon glyphicon-book pull-right"></i>Subjects</a></li>
 				  <li role="presentation"><a href="{{route('admin_logout')}}"><i class="glyphicon glyphicon-retweet pull-right"></i>Logout</a></li>
 				</ul>
@@ -39,36 +39,22 @@
 					</div>
 					<div class="panel-body">
 						<ul class="nav nav-tabs">
-						  <li role="presentation" class="active"><a href="{{route('admin_students')}}">List</a></li>
-						  <li role="presentation"><a href="{{route('admin_students_upload')}}">Upload</a></li>
+						  <li role="presentation"><a href="{{route('admin_students')}}">List</a></li>
+						  <li role="presentation" class="active"><a href="{{route('admin_students_upload')}}">Upload</a></li>
 						  
 						</ul>
-
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>Lastname</th>
-									<th>Firstname</th>
-									<th>Middlename</th>
-									<th>Age</th>
-									<th>Email</th>
-								</tr>
-							</thead>
-							<tbody>
-								@if($students->count() > 0)
-									@foreach($students as $student)
-										<tr>
-											<td>{{$student->l_name}}</td>
-											<td>{{$student->f_name}}</td>
-											<td>{{$student->m_name}}</td>
-											<td>{{$student->age}}</td>
-											<td>{{$student->email}}</td>
-										</tr>
-									@endforeach
-								@endif
-							</tbody>
-						</table>
-						<center>{{$students->links()}}</center>
+						@if(Session::has('info'))
+							<div class="alert alert-success">{{Session::get('info')}}</div>
+						@endif
+						<div class="col-md-4 col-md-offset-4">
+							<form enctype="multipart/form-data" action="{{route('admin_students_uploadCheck')}}" method="POST">
+								<div class="form-group">
+									<input type="file" name="students" class="form-control">
+								</div>
+								<button class="btn btn-primary" type="submit">Submit</button>
+								{{csrf_field()}}
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>

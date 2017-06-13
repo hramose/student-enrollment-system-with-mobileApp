@@ -25,8 +25,9 @@
 			<div class="col-lg-3 well">
 				<ul class="nav nav-pills nav-stacked row">
 				  <li role="presentation"><a href="{{route('admin_main')}}"><i class="glyphicon glyphicon-home pull-right"></i>Dashboard</a></li>
-				  <li role="presentation" class="active"><a href="{{route('admin_teachers')}}"><i class="glyphicon glyphicon-user pull-right"></i>Teacher</a></li>
+				  <li role="presentation" class="active"><a href="{{route('admin_teachers')}}"><i class="glyphicon glyphicon-user pull-right"></i>Users</a></li>
 				  <li role="presentation"><a href="{{route('admin_students')}}"><i class="glyphicon glyphicon-education pull-right"></i>Students</a></li>
+				  <li role="presentation"><a href="#"><i class="glyphicon glyphicon-bookmark pull-right"></i>Department</a></li>
 				  <li role="presentation"><a href="{{route('admin_subjects')}}"><i class="glyphicon glyphicon-book pull-right"></i>Subjects</a></li>
 				  <li role="presentation"><a href="{{route('admin_logout')}}"><i class="glyphicon glyphicon-retweet pull-right"></i>Logout</a></li>
 				</ul>
@@ -70,6 +71,16 @@
 									    <label class="control-label col-md-3" for="pass2">Repeat Password:</label>
 									    <div class="col-md-9">
 									      <input type="password" class="form-control" name="pass2" placeholder="Repeat Password">
+									    </div>
+									 </div>
+
+									 <div class="form-group {{$errors->has('role') ? 'has-error' : ''}}">
+									    <label class="control-label col-md-3" for="role">Roles:</label>
+									    <div class="col-md-9">
+									     	<select class="form-control" name="role">
+									     		<option value="2">Teacher</option>
+									     		<option value="3">Encoder</option>
+									     	</select>
 									    </div>
 									 </div>
 							 

@@ -25,8 +25,9 @@
 			<div class="col-lg-3 well">
 				<ul class="nav nav-pills nav-stacked row">
 				  <li role="presentation"><a href="{{route('admin_main')}}"><i class="glyphicon glyphicon-home pull-right"></i>Dashboard</a></li>
-				  <li role="presentation" class="active"><a href="{{route('admin_teachers')}}"><i class="glyphicon glyphicon-user pull-right"></i>Teacher</a></li>
+				  <li role="presentation" class="active"><a href="{{route('admin_teachers')}}"><i class="glyphicon glyphicon-user pull-right"></i>Users</a></li>
 				  <li role="presentation"><a href="{{route('admin_students')}}"><i class="glyphicon glyphicon-education pull-right"></i>Students</a></li>
+				  <li role="presentation"><a href="{{route('admin_departments')}}"><i class="glyphicon glyphicon-bookmark pull-right"></i>Department</a></li>
 				  <li role="presentation"><a href="{{route('admin_subjects')}}"><i class="glyphicon glyphicon-book pull-right"></i>Subjects</a></li>
 				  <li role="presentation"><a href="{{route('admin_logout')}}"><i class="glyphicon glyphicon-retweet pull-right"></i>Logout</a></li>
 				</ul>
@@ -51,24 +52,30 @@
 								<thead>
 									<tr class="info">
 										<th>Username</th>
+										<th>Roles</th>
 										<th>Email</th>
 										<th>First Name</th>
 										<th>Middle Name</th>
 										<th>Last Name</th>
 										<th>Contact</th>
-										
+										<th>Status</th>
 									</tr>
 								</thead>
 								<tbody>
 									@if($users->count())
 										@foreach($users as $user)
-											<tr>
+											<tr class=" {{$user->status_id == 2 ? 'danger' : 'success'}}">
 												<td>{{$user->username}}</td>
+												<td>{{$user->role->roles}}</td>
 												<td>{{$user->email}}</td>
 												<td>{{$user->firstname}}</td>
 												<td>{{$user->middlename}}</td>
 												<td>{{$user->lastname}}</td>
 												<td>{{$user->contact}}</td>
+												<td>
+													<a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+													<a href="#" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+												</td>
 											</tr>
 										@endforeach
 									@endif

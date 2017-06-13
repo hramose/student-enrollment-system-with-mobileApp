@@ -17,7 +17,8 @@ class CreateScheduleStudentsTable extends Migration
             $table->increments('id');
             $table->integer('student_id');
             $table->integer('subject_id');
-            $table->integer('user_id');
+            $table->integer('school_semester_id');
+            
             $table->timestamps();
         });
     }
