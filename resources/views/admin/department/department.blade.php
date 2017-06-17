@@ -45,13 +45,23 @@
 						</ul>
 
 						<div class="row">
+							<div>
+								@if(Session::has('info'))
+									<div class="alert alert-success">{{Session::get('info')}}</div>
+								@endif
+							</div>
+
 							<form>
 								<div class="col-md-4 form-group">
-									<label>Choose  to display:</label>
-									<select name="" class="form-control">
-										<option>List of Departments </option>
-										<option>List</option>
-										<option>List</option>
+									<label>Choose to display:</label>
+									<select name="department" class="form-control">
+										@if($departments->count() > 0)
+											@foreach($departments as $department)
+												<option value="{{$department->id}}">{{$department->department}}</option>
+											@endforeach
+										@else:
+											<option>No Department Available</option>
+										@endif
 									</select>
 								</div>
 							</form>

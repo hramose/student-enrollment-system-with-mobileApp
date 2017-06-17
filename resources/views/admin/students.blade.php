@@ -40,7 +40,7 @@
 					<div class="panel-body">
 						<ul class="nav nav-tabs">
 						  <li role="presentation" class="active"><a href="{{route('admin_students')}}">List</a></li>
-						  <li role="presentation"><a href="{{route('admin_students_upload')}}">Upload</a></li>
+						  <li role="presentation"><a href="{{route('admin_students_upload')}}">New</a></li>
 						  
 						</ul>
 

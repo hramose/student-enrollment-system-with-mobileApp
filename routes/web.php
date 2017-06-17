@@ -44,10 +44,10 @@ Route::group(['prefix'=> 'admin'], function(){
 			'as'=> 'admin_students_upload',
 			'uses'=> 'AdminController@students_upload'
 		]);
-		Route::post('students/upload', [
-			'as'=> 'admin_students_uploadCheck',
-			'uses'=> 'AdminController@students_uploadCheck'
-		]);
+		// Route::post('students/upload', [
+		// 	'as'=> 'admin_students_uploadCheck',
+		// 	'uses'=> 'AdminController@students_uploadCheck'
+		// ]);
 		Route::get('/subjects', [
 			'as'=> 'admin_subjects',
 			'uses'=> 'AdminController@subjects'
@@ -77,9 +77,20 @@ Route::group(['prefix'=> 'admin'], function(){
 			'as'=> 'admin_departments',
 			'uses'=> 'AdminController@departments'
 		]);
+
 		Route::get('/department/new', [
 			'as'=> 'admin_departments_new',
 			'uses'=> 'AdminController@departments_new'
+		]);
+
+		Route::post('/department', [
+			'as'=> 'admin_departments_check',
+			'uses'=> 'AdminController@departments_check'
+		]);
+
+		Route::post('/course', [
+			'as'=> 'admin_courses_check',
+			'uses'=> 'AdminController@courses_check'
 		]);
 });
 

@@ -40,21 +40,134 @@
 					<div class="panel-body">
 						<ul class="nav nav-tabs">
 						  <li role="presentation"><a href="{{route('admin_students')}}">List</a></li>
-						  <li role="presentation" class="active"><a href="{{route('admin_students_upload')}}">Upload</a></li>
+						  <li role="presentation" class="active"><a href="{{route('admin_students_upload')}}">New</a></li>
 						  
 						</ul>
 						@if(Session::has('info'))
 							<div class="alert alert-success">{{Session::get('info')}}</div>
 						@endif
-						<div class="col-md-4 col-md-offset-4">
-							<form enctype="multipart/form-data" action="{{route('admin_students_uploadCheck')}}" method="POST">
-								<div class="form-group">
-									<input type="file" name="students" class="form-control">
-								</div>
-								<button class="btn btn-primary" type="submit">Submit</button>
-								{{csrf_field()}}
-							</form>
+						<form class="form-horizontal" role="form">
+						<div class="row">
+							
+							<div class="col-lg-6">
+								
+									<div class="form-group">
+										<label class="control-label col-sm-4" for="std_id">Student ID</label>
+										<div class="col-sm-8">
+											<input type="text" name="std_id" class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-4" for="l_name">Last Name</label>
+										<div class="col-sm-8">
+											<input type="text" name="l_name" class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-4" for="f_name">First Name</label>
+										<div class="col-sm-8">
+											<input type="text" name="f_name" class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-4" for="m_name">Middle Name</label>
+										<div class="col-sm-8">
+											<input type="text" name="m_name" class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-4" for="email">Email</label>
+										<div class="col-sm-8">
+											<input type="email" name="email" class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-4" for="contact">Mobile#</label>
+										<div class="col-sm-8">
+											<input type="number" name="contact" class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-sm-4" for="contact">Address</label>
+										<div class="col-sm-8">
+											<textarea class="form-control" name="address"></textarea>
+										</div>
+									</div>
+								
+							</div>
+							<div class="col-lg-6">
+
+
+									<div class="form-group">
+										<label class="control-label col-sm-4" >Status</label>
+										<div class="col-sm-8">
+											<select class="form-control" name="status">
+												<option>List</option>
+												<option>List</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-sm-4" >Department</label>
+										<div class="col-sm-8">
+											<select class="form-control" name="department">
+												<option>List</option>
+												<option>List</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-sm-4" >Course</label>
+										<div class="col-sm-8">
+											<select class="form-control" name="course">
+												<option>List</option>
+												<option>List</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-sm-4" for="contact">Scholar</label>
+										<div class="col-sm-8">
+											<input type="text" name="scholar_name" class="form-control">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-sm-4" for="contact">Scholar Amount</label>
+										<div class="col-sm-8">
+											<input type="number" name="scholar_amount" class="form-control">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-sm-4" for="contact">Insurance</label>
+										<div class="col-sm-8">
+											<input type="text" name="insurance_name" class="form-control">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="control-label col-sm-4" for="contact">Insurance Amount</label>
+										<div class="col-sm-8">
+											<input type="number" name="insurance_amount" class="form-control">
+										</div>
+									</div>
+								
+							</div>
+									
 						</div>
+						
+							<div >
+								<center>
+										<button type="submit" class="btn btn-success">Submit</button>
+										<button type="button" class="btn btn-warning">Clear</button>
+								</center>
+								{{csrf_field()}}
+							</div>
+						</form>	
 					</div>
 				</div>
 			</div>

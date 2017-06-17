@@ -10,9 +10,15 @@ use App\Admin\TeacherCheck;
 use App\Admin\SubjectCheck;
 use App\Subject;
 use App\Http\Requests\AdminNewTeacher;
-use App\Http\Requests\admin\studentcheck;
+
 use App\Admin\StudentInsert;
 use App\Student;
+use App\Http\Requests\admin\departmentcheck;
+use App\Http\Requests\admin\course;
+use App\Admin\AddDepartment;
+use App\Department;
+
+use App\Admin\AddCourse;
 
 class AdminController extends Controller
 {
@@ -112,15 +118,31 @@ class AdminController extends Controller
         return view('admin.students.upload');
     }
 
-    public function students_uploadCheck(studentcheck $request, StudentInsert $student){
-        return $student->studentAdd();
+    public function students_uploadCheck(){
+        
     }
 
     public function departments(){
-            return view('admin.department.department');
+            $departments = Department::all();
+            return view('admin.department.department', compact('departments'));
     }
 
     public function departments_new(){
-        return view('admin.department.new');
+         $departments = Department::all();
+        return view('admin.department.new',compact('departments'));
+    }
+
+    public function departments_check(departmentcheck $request, AddDepartment $add){
+         if(!$add->addDepartment()){
+            return redirect()->back()->with('info', 'Failed to Add new Category');
+         }
+         return redirect()->route('admin_departments')->with('info', 'New Category Successfully added!');
+    }
+
+    public function courses_check(course $request, AddCourse $course){
+        if(!$course->insertCourse()){
+            return redirect()->back()->with('fail', 'Failed to add new course');
+        }
+        return redirect()->back()->with('add', 'New course Successfully added!');
     }
 }
