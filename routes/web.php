@@ -3,6 +3,7 @@
 use App\User;
 use App\Role;
 use App\Status;
+use App\Standing;
 
 Route::get('/', function(){
 	return redirect()->route('login');
@@ -44,10 +45,10 @@ Route::group(['prefix'=> 'admin'], function(){
 			'as'=> 'admin_students_upload',
 			'uses'=> 'AdminController@students_upload'
 		]);
-		// Route::post('students/upload', [
-		// 	'as'=> 'admin_students_uploadCheck',
-		// 	'uses'=> 'AdminController@students_uploadCheck'
-		// ]);
+		Route::post('students/upload', [
+			'as'=> 'admin_students_uploadCheck',
+			'uses'=> 'AdminController@students_uploadCheck'
+		]);
 		Route::get('/subjects', [
 			'as'=> 'admin_subjects',
 			'uses'=> 'AdminController@subjects'
@@ -91,6 +92,14 @@ Route::group(['prefix'=> 'admin'], function(){
 		Route::post('/course', [
 			'as'=> 'admin_courses_check',
 			'uses'=> 'AdminController@courses_check'
+		]);
+		Route::get('/status', [
+			'as'=> 'admin_students_status',
+			'uses'=> 'AdminController@students_status'
+		]);
+		Route::post('/status', [
+			'as'=> 'admin_standing_check',
+			'uses'=> 'AdminController@standing_check'
 		]);
 });
 
@@ -155,3 +164,4 @@ Route::group(['prefix'=> 'encoder'], function(){
 // 	$status->status= "deactivated"; 
 // 	$status->save();
 // });
+

@@ -11,6 +11,7 @@ use App\Admin\SubjectCheck;
 use App\Subject;
 use App\Http\Requests\AdminNewTeacher;
 
+
 use App\Admin\StudentInsert;
 use App\Student;
 use App\Http\Requests\admin\departmentcheck;
@@ -19,6 +20,17 @@ use App\Admin\AddDepartment;
 use App\Department;
 
 use App\Admin\AddCourse;
+use App\Http\Requests\admin\standingcheck;
+use App\Admin\AddStanding;
+
+
+use App\Scholar;
+use App\Insurance;
+use App\StudentCourse;
+use App\Standing;
+
+use App\Http\Requests\admin\studentcheck;
+use App\Admin\AddStudent;
 
 class AdminController extends Controller
 {
@@ -115,11 +127,13 @@ class AdminController extends Controller
 
 
     public function students_upload(){
-        return view('admin.students.upload');
+        $standings = Standing::all();
+        $courses = StudentCourse::all();
+        return view('admin.students.upload', compact('standings', 'courses'));
     }
 
-    public function students_uploadCheck(){
-        
+    public function students_uploadCheck(studentcheck $request, AddStudent $student){
+          $student->insertStudent();  
     }
 
     public function departments(){
@@ -144,5 +158,17 @@ class AdminController extends Controller
             return redirect()->back()->with('fail', 'Failed to add new course');
         }
         return redirect()->back()->with('add', 'New course Successfully added!');
+    }
+
+    public function students_status(){
+        $standings = Standing::all();
+        return view('admin.status.status', compact('standings'));
+    }
+
+    public function standing_check(standingcheck $request, AddStanding $standing){
+       if(!$standing->insertStanding()){
+        return redirect()->back()->with('fail', 'Failed to add Student class Standing');
+       }
+       return redirect()->back()->with('add', 'You have Successfully added student class standing');
     }
 }

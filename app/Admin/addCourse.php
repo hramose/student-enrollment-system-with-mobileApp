@@ -4,7 +4,7 @@ namespace App\Admin;
 
 use Illuminate\Http\Request;
 use App\Department;
-use App\Course;
+use App\StudentCourse;
 class AddCourse{
 
 	protected $request;
@@ -17,7 +17,7 @@ class AddCourse{
 		$id = $this->request['department'];
 
 		$find = Department::findOrFail($id);
-		$course = new Course;
+		$course = new StudentCourse;
 		$course->course = $this->request['course'];
 		$find->courses()->save($course);
 		return true;

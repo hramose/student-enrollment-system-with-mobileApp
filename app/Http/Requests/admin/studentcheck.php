@@ -13,7 +13,7 @@ class studentcheck extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,21 @@ class studentcheck extends FormRequest
     public function rules()
     {
         return [
-            //
+            'std_id' => 'required|max:20',
+            'l_name' => 'required|max:20',
+            'f_name' => 'required|max:20',
+            'm_name' => 'required|max:20',
+            'email' => 'required|email',
+            'contact' => 'required|max:20',
+            'address' => 'required|max:100',
+            'status' => 'required|max:30',
+            'course' => 'required|max:30',
+            'scholar_name' => 'required|max:30',
+            'scholar_amount' => 'required|max:10',
+            'insurance_name' => 'required|max:30',
+            'insurance_amount' => 'required|max:10',
+            'insurance_capacity' => 'required|max:3',
+            'dob'=> 'required'
         ];
     }
 }
