@@ -5,6 +5,7 @@ namespace App\Admin;
 use Illuminate\Http\Request;
 use App\Department;
 use App\StudentCourse;
+
 class AddCourse{
 
 	protected $request;

@@ -136,6 +136,19 @@ Route::group(['prefix'=> 'encoder'], function(){
 			'as'=> 'encoder_logout',
 			'uses' => 'EncoderController@logout'
 		]);
+		Route::get('/enroll', [
+			'as'=> 'encoder_enroll',
+			'uses'=> 'EncoderController@enroll'
+		]);
+		Route::post('/enroll', [
+			'as'=> 'encoder_search',
+			'uses'=> 'EncoderController@encoder_search'
+		]);
+		Route::get('/enroll/student/{student_id}', [
+			'as'=> 'encoder_enroll_student',
+			'uses'=> 'EncoderController@enroll_student'
+		]);
+
 });
 
 // Route::get('/userAdd', function(){

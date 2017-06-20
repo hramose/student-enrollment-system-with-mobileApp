@@ -13,4 +13,11 @@ class Student extends Model
     public function insurance(){
     	return $this->hasOne('App\Insurance');
     }
+
+    public function course(){
+    	return $this->belongsTo('App\StudentCourse');
+    }
+    public function standing(){
+    	return $this->belongsTo('App\Standing');
+    }
 }
